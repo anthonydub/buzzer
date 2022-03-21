@@ -13,8 +13,8 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   /* background: linear-gradient(-45deg, #a6f4e5 0%, #23e6bf 47%); */
   /* background-color: rgb(44, 75, 255); */
-  background-color: #fff;
-  color: #1A2634;
+  background-color: rgb(16, 21, 78);
+  color: rgb(243, 175, 185);
   text-align: center;
 }
 
@@ -40,10 +40,6 @@ li {
   display: none;
 }
 
-header {
-  background-color: #fff;
-}
-
 .logo {
   width: 100%;
   max-width: 310px;
@@ -59,11 +55,6 @@ header {
 }
 .view button:last-child {
   margin-bottom: 0;
-}
-
-.buzzer-mode {
-  background-color: rgb(16, 21, 78);
-  color: rgb(243, 175, 185);
 }
 
 input[type="text"],
@@ -96,14 +87,14 @@ input[type="number"]:active {
 button {
   padding: 1.4em 1.4em;
   font-size: 1.2em;
-  background-color: #161D99;
-  color: #fff;
+  background-color: rgb(255, 221, 28);
+  color: #000;
   cursor: pointer;
   border: 0;
 }
 
 button:hover {
-  background-color: rgb(22, 29, 153);
+  background-color: rgb(242, 182, 16);
 }
 
 button:active {
@@ -141,7 +132,7 @@ button:focus {
 .js-buzzes h1 {
   text-align: center;
   color: #000;
-  background-color: rgb(242, 182, 16);
+  background-color: #00cc1b;
   padding-top: 5%;
   padding-bottom: 5%;
   border-radius: 10px;
