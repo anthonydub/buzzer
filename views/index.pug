@@ -12,15 +12,14 @@ html
     div.container
       form.view.js-join
         img(src="/lets-play.png" class="main-image")
-        h2="Let's play!"
-        input(type='text' name='name' placeholder='Your name' required='required')
-        input(type='number' name='team' placeholder='Your team number' required='required')
-        button(type='submit')='Join!'
+        h2="Questions pour un Pochtron !"
+        input(type='text' name='name' placeholder='Beatrice K' required='required')
+        button(type='submit')='Jouer!'
 
       div.view.js-joined.hidden
-        button.js-buzzer.buzzer()='Buzz!!!'
-        p.js-joined-info=""
-        button.js-edit.secondary='Change teams'
+        button.js-buzzer.buzzer()='Buzzer'
+        h1.js-joined-info=""
+        //- button.js-edit.secondary='Change name'
 
     script(src='/socket.io/socket.io.js')
     script(src='/join.js')

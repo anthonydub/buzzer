@@ -9,11 +9,12 @@ html
       img.logo(src='/buzzer-logo.svg')
 
     div.container
-      h2.js-active=`${users.length} joined`
-      ol.js-buzzes
+      h2.js-active=`Nobody joined`
+      button.js-lock='Bloquer les buzzers'
+      button.js-unlock='Débloquer les buzzers'
+      div.js-buzzes
         each buzz in buzzes
-          li=`${buzz.name} on Team ${buzz.team}`
-      button.js-clear='Clear buzzes'
+          h1=`${buzz.name}`
 
     script(src='/socket.io/socket.io.js')
     script(src='/host.js')

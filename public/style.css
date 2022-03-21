@@ -122,15 +122,34 @@ button:focus {
 .buzzer {
   height: 10em;
   font-size: 2em;
-  background-color: rgb(243, 175, 185);
-  color: rgb(18, 30, 102);
+  background-color: rgb(255, 221, 28);
+  color: #000;
 }
 .buzzer:focus {
   box-shadow: 0 0 0 3px #ABB7FF;
 }
 .buzzer:hover,
 .buzzer:active {
-  background-color: #e97284;
+  background-color: rgb(242, 182, 16);
+}
+
+.isBuzzed:disabled {
+  background-color: #00cc1b;
+  cursor: pointer;
+}
+
+.js-buzzes h1 {
+  text-align: center;
+  color: #000;
+  background-color: rgb(242, 182, 16);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-radius: 10px;
+}
+
+.isNotBuzzed:disabled {
+  background-color: #df0000;
+  cursor: pointer;
 }
 
 .secondary {
