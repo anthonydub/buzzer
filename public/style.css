@@ -41,9 +41,7 @@ li {
 }
 
 .logo {
-  width: 100%;
-  max-width: 310px;
-  max-height: 120px;
+  width: 30%;
   padding: 1em 0;
 }
 
