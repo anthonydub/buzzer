@@ -58,7 +58,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     let userid = ""
     Object.keys(data.connections).forEach(uid => {
-      console.log(data.connections[uid] == socket)
       if(data.connections[uid] == socket)
         userid = uid
     });
