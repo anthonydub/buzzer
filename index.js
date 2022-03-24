@@ -47,6 +47,8 @@ function unlockAll(){
   io.emit('buzzes', [...data.buzzes])
 }
 
+//TODO: Faire la finale (coundown qui se stoppe sur ordre admin et peut redemarrer, main qui passe d'un joueur à l'autre)
+
 io.on('connection', (socket) => {
   socket.on('join', (user) => {
     data.users[user.id] = user
