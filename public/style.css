@@ -41,8 +41,8 @@ li {
 }
 
 .logo {
-  width: 30%;
-  padding: 1em 0;
+  width: 80%;
+  margin-top: 10px;
 }
 
 .container {
@@ -125,6 +125,10 @@ button:focus {
 .isBuzzed:disabled {
   background-color: #00cc1b;
   cursor: pointer;
+}
+
+.js-joined-info {
+  margin: 0;
 }
 
 .js-buzzes h1 {
