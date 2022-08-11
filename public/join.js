@@ -85,6 +85,17 @@ socket.on('mode', (mode, finalist) => {
   }
 })
 
+socket.on('switchHand', (username) => {
+  if(user.name == username){
+    buzzer.innerText = `Vous avez la main !`
+    unlockBuzzer()
+  }
+  else{
+    buzzer.innerText = `Vous n'avez pas la main !`
+    lockBuzzer()
+  }
+})
+
 // editInfo.addEventListener('click', () => {
 //   joined.classList.add('hidden')
 //   form.classList.remove('hidden')

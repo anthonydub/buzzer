@@ -19,6 +19,8 @@ const hostName = "Samuel Etienne"
 class Countdown{
   pauseTimer = false
   progress = 100.0
+  queue = []
+
   Countdown()
   {  
   }
@@ -28,6 +30,7 @@ class Countdown{
     this.pauseTimer = true
     countDown.style.backgroundColor = "black"
     progressBar.style.backgroundColor = "gray"
+    socket.emit('lock', this.queue.shift().name)
   }
 
   resetCountdown()
@@ -42,26 +45,34 @@ class Countdown{
     pointsFinale.innerText = 4
     countDown.style.backgroundColor = blue
     progressBar.style.backgroundColor = yellow
+    finalists = data.users.filter(u => u.finalist);
+    queue = [finalists[0], finalists[1], finalists[0], finalists[1]]
   }
 
   resumeCountdown(){
     countDown.style.backgroundColor = blue
     progressBar.style.backgroundColor = yellow
     this.pauseTimer = false
+    const prevPointsFinale = pointsFinale.innerText
     let interval = setInterval(() => {
-      if (this.progress >75 && this.progress <=100)
+      if (prevPointsFinale != pointsFinale.innerText)
       {
-        pointsFinale.innerText = 4
+        socket.emit('switchHand', this.queue[0].name)
+        queue.shift()
+        if (this.progress > 75 && this.progress <= 100) {
+          pointsFinale.innerText = 4
+        }
+        else if (this.progress <= 75 && this.progress > 50) {
+          pointsFinale.innerText = 3
+        }
+        else if (this.progress <= 50 && this.progress > 25) {
+          pointsFinale.innerText = 2
+        }
+        else {
+          pointsFinale.innerText = 1
+        }
       }
-      else if (this.progress<= 75 && this.progress >50){
-        pointsFinale.innerText = 3
-      }
-      else if (this.progress<=50 && this.progress >25){  
-        pointsFinale.innerText = 2
-      }
-      else {
-        pointsFinale.innerText = 1
-      }
+      
       this.progress = this.progress - 0.5
       progress.style.height = this.progress + "%";
       if(this.progress <= 0 || this.pauseTimer)
@@ -138,8 +149,7 @@ socket.on('inactive', (user) => {
   }
 })
 
-// When a player buzzes, inform the host
-socket.on('buzzes', (buzzes) => {
+function updateWhoBuzzed(buzzes){
   buzzList.innerHTML = buzzes
     .map(buzz => {
       const p = buzz.split('-')
@@ -147,9 +157,18 @@ socket.on('buzzes', (buzzes) => {
     })
     .map(user => `<h1>${user.name}</h1>`)
     .join('')
-  if (buzzes.length > 0)
-  {
-    socket.emit('lock', buzzes[0])
+}
+
+// When a player buzzes, inform the host
+socket.on('buzzes', (buzzes) => {
+  updateWhoBuzzed(buzzes)
+  if (btnMode.innerHTML == "Mode face à face"){
+    if (buzzes.length > 0)
+    {
+      socket.emit('lock', buzzes[0])
+    }
+  } else {
+    data.CTDWN.stopCountdown()
   }
 })
 

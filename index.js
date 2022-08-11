@@ -112,6 +112,12 @@ io.on('connection', (socket) => {
     }
     unlockAll()
   })
+
+  socket.on('switchHand', () => {
+    Object.entries(data.users)
+      .filter(([_userId, user]) => user.finalist)
+      .forEach(([_userId, user]) => data.connections[user.id].emit('switchHand'));
+  })
 })
 
 server.listen(8090, () => console.log('Listening on 8090'))
