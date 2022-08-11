@@ -41,7 +41,7 @@ li {
 }
 
 .logo {
-  width: 80%;
+  height: 180px;
   margin-top: 10px;
 }
 
@@ -83,8 +83,8 @@ input[type="number"]:active {
 }
 
 button {
-  padding: 1.4em 1.4em;
-  font-size: 1.2em;
+  padding: 10px;
+  font-size: 1.1em;
   background-color: rgb(255, 221, 28);
   color: #000;
   cursor: pointer;
@@ -135,8 +135,8 @@ button:focus {
   text-align: center;
   color: #000;
   background-color: #00cc1b;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 10px;
+  font-size: 1.1em;
   border-radius: 10px;
 }
 
@@ -155,19 +155,19 @@ button:focus {
 }
 
 #loading-bar {
-  height: 25vw;
-  width: 20vw;
+  height: 250px;
+  width: 200px;
   min-width: 24px;
   margin:auto;
   background-color: rgb(16, 21, 78);
   border: 1vw solid rgb(242, 182, 16);
-  box-shadow: 0 0 2vw rgb(16, 21, 78);
+  box-shadow: 0 0 1vw rgb(16, 21, 78);
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-  margin-bottom: 5vw;
+  margin-bottom: 10px;
 }
 
 #progress {
