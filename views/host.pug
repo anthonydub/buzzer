@@ -9,12 +9,24 @@ html
       img.logo(src="/lets-play.png")
 
     div.container
-      h2.js-active=`Personne ne joue à QPUP`
+      h2.js-mode-text=`9 points gagnants !`
+      h2.js-playerHand=``
+      #loading-bar.hidden
+        #progress
+        p.js-pointsFinale="4"
+      div.pauseReset
+        button.js-pause.hidden='Démarrer timer'
+        button.js-reset.hidden='Reset timer'
       button.js-lock='Bloquer les buzzers'
       button.js-unlock='Débloquer les buzzers'
       div.js-buzzes
         each buzz in buzzes
           h1=`${buzz.name}`
+      h1.js-passage-text='Passage en mode face à face'
+      div.js-all-players
+        each user in users
+          button=`${user.name}`
+      button.js-mode='Mode face à face'
 
     script(src='/socket.io/socket.io.js')
     script(src='/host.js')

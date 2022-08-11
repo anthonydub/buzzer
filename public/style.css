@@ -153,3 +153,63 @@ button:focus {
 .secondary:hover {
   background-color: rgb(44, 75, 255);
 }
+
+#loading-bar {
+  height: 25vw;
+  width: 20vw;
+  min-width: 24px;
+  margin:auto;
+  background-color: rgb(16, 21, 78);
+  border: 1vw solid rgb(242, 182, 16);
+  box-shadow: 0 0 2vw rgb(16, 21, 78);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  margin-bottom: 5vw;
+}
+
+#progress {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(242, 182, 16);
+  transition: .05s ease;
+}
+
+.js-pointsFinale{
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  color:white;
+  text-shadow: rgb(14, 14, 51) 1px 1px;
+  width:100%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin:auto;
+  padding-top: auto;
+  padding-bottom: auto;
+  font-size: 2em;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.pauseReset
+{
+  display: flex;
+  justify-content: center;
+}
+
+.js-pause, .js-reset{
+  width:40%;
+  margin:auto;
+}
+
+.allPlayers{
+  width:50%;
+  margin:auto;
+}

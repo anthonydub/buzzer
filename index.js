@@ -94,6 +94,17 @@ io.on('connection', (socket) => {
     }
   })
 
+  socket.on('mode', async (mode) => {
+    Object.keys(data.connections).forEach(s => {
+      data.connections[s].emit('mode', mode, data.users[s].finalist)
+    });
+  })
+
+  socket.on('toggleFinalist', async (userId) => {
+    data.users[userId].finalist = !data.users[userId].finalist
+    console.log(data.users[userId].name, data.users[userId].finalist)
+  })
+
   socket.on('unlock', (admin) => {
     if(admin)
     { 

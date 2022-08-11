@@ -22,6 +22,7 @@ const saveUserInfo = () => {
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   user.name = form.querySelector('[name=name]').value
+  user.finalist = false
   if (!user.id) {
     user.id = Math.floor(Math.random() * new Date())
   }
@@ -38,27 +39,50 @@ buzzer.addEventListener('click', (e) => {
 })
 
 socket.on('lock', (userName) => {
-    console.log(`Lock buzzers :`, userName)
-    if(userName == joinedInfo.innerText)
-    {
-      buzzer.classList.add('isBuzzed')
-      buzzer.innerText = `Vous avez la main, Dites votre réponse !`
-    }
-    else{
-      buzzer.classList.add('isNotBuzzed')
-      buzzer.innerText = `${userName} a la main, FERMEZ-LA !`
-    }
-    buzzer.disabled = true
-    buzzer.classList.add('disabled')
-  })
+  console.log(`Lock buzzers :`, userName)
+  if(userName == user.name)
+  {
+    buzzer.classList.add('isBuzzed')
+    buzzer.innerText = `Vous avez la main, Dites votre réponse !`
+  }
+  else{
+    buzzer.classList.add('isNotBuzzed')
+    buzzer.innerText = `${userName} a la main, FERMEZ-LA !`
+  }
+})
 
 socket.on('unlock', () => {
+  unlockBuzzer();
+})
+
+
+function lockBuzzer() {
+  buzzer.disabled = true
+  buzzer.classList.add('disabled')
+}
+
+function unlockBuzzer(){
   console.log(`Unlock buzzers`)
   buzzer.innerText = `Buzzer`
   buzzer.classList.remove('isBuzzed')
   buzzer.classList.remove('isNotBuzzed')
   buzzer.disabled = false
   buzzer.classList.remove('disabled')
+}
+
+socket.on('mode', (mode, finalist) => {
+  if (mode == 'finale') {
+    if (finalist) {
+      buzzer.innerText = `Vous êtes finaliste !`
+    }
+    else {
+      buzzer.innerText = `Vous n'êtes pas finaliste :(`
+      lockBuzzer();
+    }
+  }
+  else {
+    unlockBuzzer();
+  }
 })
 
 // editInfo.addEventListener('click', () => {
